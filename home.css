@@ -1,0 +1,199 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Creates 3 sections */
+  align-items: center;
+  padding: 0 5%;
+  height: 70px;
+  background-color: #000000;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 1. Logo Section */
+.logo {
+  flex: 1; 
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 2. Middle Links Section */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+/* 3. Icons Section (Right Side) */
+.nav-icons {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end; /* Push icons to the far right side */
+  gap: 15px; /* Space between the images */
+}
+
+.nav-icons img {
+  width: 24px;  /* Size of the image */
+  height: 24px;
+  cursor: pointer;
+  filter: brightness(0) invert(1); /* Makes black icons white */
+  transition: transform 0.2s;
+}
+
+.nav-icons img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Hero Section Styling */
+.hero-section {
+  width: 100%;
+  line-height: 0; /* Removes the tiny gap often found under images */
+}
+
+.full-width-img {
+  width: 100%;
+  height: auto;   /* Maintains the aspect ratio */
+  display: block; /* Removes bottom spacing */
+}
+
+/* Container for the three boxes */
+.info-container {
+  display: flex;            /* Enables flexbox */
+  justify-content: center;   /* Centers the boxes horizontally */
+  align-items: stretch;      /* Makes boxes equal height */
+  padding: 40px 350px;
+  gap: 40px;                /* Adds space between the boxes */
+  max-width: 1200px;        /* Limits width on large screens */
+  margin: 0 auto;  
+  background-color: #000000;         /* Centers the container itself */
+}
+
+/* Individual box styling */
+.info-box {
+  flex: 1;                  /* Forces boxes to be exactly 1/3 width */
+  text-align: center;       /* Centers text inside the boxes */
+  padding: 20px;
+  border: 1px solid #ddd;   /* Optional: adds a subtle border */
+  border-radius: 8px;       /* Optional: rounds the corners */
+  background-color: #f9f9f9;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+  .info-container {
+      flex-direction: column; /* Stacks boxes vertically on small screens */
+  }
+}
+
+.product-grid {
+  display: grid;
+  /* Creates 3 equal columns */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden; /* Keeps the zoom effect inside the box */
+  display: block;
+  aspect-ratio: 1 / 1; /* Makes the boxes perfectly square */
+  border-radius: 4px;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents images from stretching */
+  transition: transform 0.5s ease; /* Smooth zoom transition */
+}
+
+/* Hover Effect: Zoom Image */
+.grid-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Hover Effect: Dark Overlay and Text */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Transparent black */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+.overlay span {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid white;
+  padding: 10px 20px;
+}
+
+.grid-item:hover .overlay {
+  opacity: 1; /* Shows overlay on hover */
+}
+
+/* Responsive: 2 columns on tablets, 1 column on phones */
+@media (max-width: 900px) {
+  .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+      grid-template-columns: 1fr;
+  }
+}
+
+/* The full-width black wrapper */
+.shop-cta-section {
+  background-color: #000; /* Black background extends full width */
+  width: 100%;
+  margin-top: 40px;       /* Space between the grid and this section */
+}
+
+.button-container {
+  max-width: 1200px;      /* Matches your grid width */
+  margin: 0 auto;         /* Centers the container */
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;     /* Vertical breathing room */
+}
+
+/* Button styled for a black background */
+.btn-shop {
+  display: inline-block;
+  padding: 15px 45px;
+  background-color: #fff;  /* White button */
+  color: #000;             /* Black text */
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+/* Hover Effect: Button turns transparent with white border */
+.btn-shop:hover {
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
