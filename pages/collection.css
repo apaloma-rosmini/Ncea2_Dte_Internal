@@ -1,0 +1,113 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Creates 3 sections */
+  align-items: center;
+  padding: 0 5%;
+  height: 70px;
+  background-color: #000000;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 1. Logo Section */
+.logo {
+  flex: 1; 
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 2. Middle Links Section */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+/* 3. Icons Section (Right Side) */
+.nav-icons {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end; /* Push icons to the far right side */
+  gap: 15px; /* Space between the images */
+}
+
+.nav-icons img {
+  width: 24px;  /* Size of the image */
+  height: 24px;
+  cursor: pointer;
+  filter: brightness(0) invert(1); /* Makes black icons white */
+  transition: transform 0.2s;
+}
+
+.nav-icons img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+
+
+/* Collection Header Outer Container */
+.collection-header {
+    width: 100%;
+    /* Creates the large container 'box' seen in the wireframe */
+    background-color: #f9f9f9; /* Subtle off-white for contrast against the navbar */
+    padding: 100px 0; /* Adjust this value (up/down) to change the 'box' height */
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #eee; /* Adds a fine line to separate it from the filter section below */
+}
+
+/* Container for positioning */
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Centered Inner 'Box' with the Text */
+.header-content-box {
+    display: inline-block; /* Keeps the box from stretching full width */
+    /* Styles the actual content box seen in the wireframe */
+    border: 2px solid #000; /* Solid border for that classic streetwear feel */
+    padding: 40px 60px; /* Space inside the box around the text */
+    background-color: #fff; /* Crisp white inside the box */
+}
+
+/* Heading (H1) Styling */
+.header-content-box h1 {
+    font-size: 3rem; /* Prominent size for the main title */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #000;
+}
+
+/* Subheading (H2) Styling */
+.header-content-box h2 {
+    font-size: 1.25rem; /* Smaller, supporting size */
+    margin-bottom: 0;
+    font-weight: 300;
+    color: #666; /* Grey for a premium, less aggressive feel */
+    font-style: italic; /* A reverent, thoughtful touch */
+}
+
+/* --- Responsive Media Query --- */
+@media (max-width: 768px) {
+    .header-content-box {
+        padding: 20px 30px; /* Smaller padding on mobile devices */
+    }
+
+    .header-content-box h1 {
+        font-size: 2rem; /* Reduced font size for mobile screens */
+    }
+
+    .header-content-box h2 {
+        font-size: 1rem; /* Reduced font size for mobile screens */
+    }
+}

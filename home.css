@@ -158,7 +158,7 @@
     content: '';
     width: 50px;
     height: 3px;
-    background-color: white;
+    background-color: whi;
     position: absolute;
     bottom: -10px;
     left: 50%;
@@ -243,3 +243,84 @@
   }
 }
 
+/* SPRINT 1 */
+
+/* Footer Base Styles */
+.footer {
+    background-color: #000; /* Matching your streetwear aesthetic */
+    color: #fff;
+    padding: 60px 20px 20px;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+    gap: 40px;
+}
+
+/* Column Content Styling */
+.footer-column h3 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-verse {
+    font-style: italic;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a, .contact-col a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-column ul li a:hover, .contact-col a:hover {
+    color: #fff;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* --- Responsive Media Query --- */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Stacks columns on mobile */
+        text-align: center;
+    }
+
+    .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

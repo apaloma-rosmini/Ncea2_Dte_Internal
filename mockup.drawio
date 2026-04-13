@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="s9gfEogt6B1k-MXw57D_" name="Page-1">
-        <mxGraphModel dx="2830" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="4111" dy="1416" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -16,14 +16,8 @@
                 <mxCell id="9" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-10" y="390" width="820" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="Text 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-10" y="390" width="270" height="70" as="geometry"/>
-                </mxCell>
-                <mxCell id="11" value="Text 2" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="390" width="270" height="70" as="geometry"/>
-                </mxCell>
-                <mxCell id="12" value="Text 3" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="530" y="390" width="280" height="70" as="geometry"/>
+                <mxCell id="12" value="Text Box" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="390" width="280" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="14" value="Image 1" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="35" y="470" width="180" height="180" as="geometry"/>
