@@ -6,12 +6,12 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <title>Walk By Faith</title>
 </head>
 <body>
 
-<!-- Navbar (STATIC) -->
+<!-- Navbar -->
 <nav class="navbar">  
     <div class="logo">Walk By Faith</div>
     
@@ -22,12 +22,12 @@
     </ul>
 
     <div class="nav-icons"> 
-        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}" alt="Search">
-        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}" alt="Cart">
+        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}">
+        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
     </div>
 </nav>
 
-<!-- Hero Section (STATIC) -->
+<!-- Hero -->
 <header class="hero-section">
     <div class="hero-content">
         <h1>Walk By Faith</h1>
@@ -35,9 +35,7 @@
         <a href="/collection" class="hero-btn">Shop The Collection</a>
     </div>
 
-    <img src="{{ url_for('static', filename='images/Navbar/praise.JPG') }}" 
-         class="full-width-img"
-         alt="Hero Image">
+    <img src="{{ url_for('static', filename='images/Navbar/praise.JPG') }}" class="full-width-img">
 </header>
 
 <!-- Title -->
@@ -45,7 +43,7 @@
     <h2>Best Sellers</h2>
 </section>
 
-<!-- 🔥 ONLY GRID (FROM DATABASE) -->
+<!-- 🔥 DATABASE GRID -->
 <section class="product-grid" id="product-grid"></section>
 
 <!-- Footer -->
@@ -76,7 +74,7 @@
     </div>
 </footer>
 
-<!-- 🔥 JAVASCRIPT (FIXED GRID) -->
+<!-- 🔥 FIXED JAVASCRIPT -->
 <script>
 fetch("/items")
   .then(res => res.json())
@@ -84,21 +82,24 @@ fetch("/items")
     const grid = document.getElementById("product-grid");
 
     data.slice(0, 6).forEach(item => {
+
       const product = document.createElement("a");
       product.classList.add("grid-item");
-      product.href = "#";
+
+      // 🔥 THIS IS THE IMPORTANT FIX
+      product.href = "/product/" + item.id;
 
       product.innerHTML = `
         <img src="${item.image}" alt="${item.name}">
         <div class="overlay">
-            <span>${item.name.replace("Catholic_", "").replace("_", " ")}</span>
+            <span>${item.name.replace("Catholic_", "").replaceAll("_", " ")}</span>
         </div>
       `;
 
       grid.appendChild(product);
     });
   })
-  .catch(err => console.log(err));
+  .catch(err => console.log("ERROR:", err));
 </script>
 
 </body>

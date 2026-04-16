@@ -1,3 +1,14 @@
+/* GLOBAL FONT RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between; /* Creates 3 sections */

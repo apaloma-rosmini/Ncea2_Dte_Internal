@@ -1,35 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="collection.css">
-    <title>Clothing Shopping Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/collection.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>Collection</title>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">  
-        <div class="logo">Walk By Faith</div>
-        <ul class="nav-links">
-          <li><a href="../home.html">Home</a></li>
-          <li><a href="pages/collection.html">Shop Collection</a></li>
-          <li><a href="pages/contact.html">Contact</a></li>
-        </ul>
+
+<!-- Navbar -->
+<nav class="navbar">  
+    <div class="logo">Walk By Faith</div>
     
-        <!--Icons On Navbar -->
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/collection">Shop Collection</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
     <div class="nav-icons"> 
-        <img src="../images/Navbar/search.png" alt="Search">
-        <img src="../images/Navbar/cart.png" alt="Cart">
+        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}">
+        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
     </div>
-        </nav>
-    
-        <header class="collection-header">
-    <div class="header-container">
-        <div class="header-content-box">
-            <h1>Our Collections</h1>
-            <h2>Carry the Cross. Walk the Way.</h2>
-        </div>
-    </div>
+</nav>
+
+<!-- HEADER -->
+<header class="header">
+    <h1>Our Collection</h1>
+    <p>Faith-driven fashion</p>
 </header>
+
+<!-- FILTER -->
+<section class="filters">
+    <select id="typeFilter">
+        <option value="all">All</option>
+        <option value="T-Shirt">T-Shirts</option>
+        <option value="Outerwear">Outerwear</option>
+        <option value="Pants">Pants</option>
+    </select>
+
+    <select id="priceFilter">
+        <option value="default">Sort Price</option>
+        <option value="low">Low → High</option>
+        <option value="high">High → Low</option>
+    </select>
+</section>
+
+<!-- GRID -->
+<section class="grid" id="grid"></section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        
+        <div class="footer-column">
+            <h2>Walk By Faith</h2>
+            <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/collection">Shop Collection</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <p>Email: 21110@rosmini.school.nz</p>
+            <p>Phone: +64 6 6767 6767</p>
+            <p>Auckland, New Zealand</p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+let items = [];
+
+fetch("/items")
+.then(res => res.json())
+.then(data => {
+    items = data;
+    show(items);
+});
+
+function show(data){
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+
+    data.forEach(item=>{
+        grid.innerHTML += `
+        <a href="/product/${item.id}" class="card">
+            <img src="${item.image}">
+            <div class="info">
+                <h3>${item.name.replaceAll("_"," ")}</h3>
+                <p>$${item.price}</p>
+            </div>
+        </a>`;
+    });
+}
+
+function filter(){
+    let type = document.getElementById("typeFilter").value;
+    let price = document.getElementById("priceFilter").value;
+
+    let filtered = [...items];
+
+    if(type !== "all"){
+        filtered = filtered.filter(i=>i.type === type);
+    }
+
+    if(price === "low"){
+        filtered.sort((a,b)=>a.price-b.price);
+    }
+    if(price === "high"){
+        filtered.sort((a,b)=>b.price-a.price);
+    }
+
+    show(filtered);
+}
+
+document.getElementById("typeFilter").addEventListener("change", filter);
+document.getElementById("priceFilter").addEventListener("change", filter);
+</script>
+
 </body>
 </html>

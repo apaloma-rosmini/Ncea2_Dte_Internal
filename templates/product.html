@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>Product</title>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">  
+    <div class="logo">Walk By Faith</div>
+    
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/collection">Shop Collection</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-icons"> 
+        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}">
+        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
+    </div>
+</nav>
+
+<section class="product-container">
+
+    <!-- IMAGE -->
+    <div class="product-image">
+        <img id="img">
+    </div>
+
+    <!-- DETAILS -->
+    <div class="product-details">
+        <h1 id="name"></h1>
+        <p id="price"></p>
+        <p id="desc"></p>
+
+        <select>
+            <option>Size</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+        </select>
+
+        <input type="number" value="1" min="1">
+
+        <button>Add to Cart</button>
+    </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        
+        <div class="footer-column">
+            <h2>Walk By Faith</h2>
+            <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/collection">Shop Collection</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <p>Email: 21110@rosmini.school.nz</p>
+            <p>Phone: +64 6 6767 6767</p>
+            <p>Auckland, New Zealand</p>
+        </div>
+
+    </div>
+</footer>
+<script>
+const id = window.location.pathname.split("/").pop();
+
+fetch(`/item/${id}`)
+.then(res=>res.json())
+.then(item=>{
+    document.getElementById("img").src = item.image;
+    document.getElementById("name").textContent = item.name.replaceAll("_"," ");
+    document.getElementById("price").textContent = "$" + item.price;
+    document.getElementById("desc").textContent = item.description;
+});
+</script>
+
+</body>
+</html>
