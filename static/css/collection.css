@@ -85,7 +85,7 @@ body {
 .filters {
   text-align: center;
   padding: 20px;
-  background: #eee;
+  background: black;
 }
 
 .filters select {
