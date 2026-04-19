@@ -203,25 +203,3 @@ body {
         transform: translateX(-50%);
     }
 }
-
-
-
-
-.search-container {
-  position: relative;
-}
-
-#searchInput {
-  position: absolute;
-  right: 0;
-  top: 40px;
-  padding: 10px;
-  width: 200px;
-  display: none;
-  border: 1px solid #ccc;
-}
-
-/* show input when active */
-#searchInput.active {
-  display: block;
-}
