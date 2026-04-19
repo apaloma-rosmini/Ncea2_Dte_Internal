@@ -9,7 +9,7 @@
 <title>Collection</title>
 </head>
 <body>
-
+<section class="product-grid" id="product-grid"></section>
 <!-- Navbar -->
 <nav class="navbar">  
     <div class="logo">Walk By Faith</div>
@@ -19,8 +19,26 @@
         <li><a href="/collection">Shop Collection</a></li>
     </ul>
 
-    <div class="nav-icons"> 
-        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}">
+<div class="nav-icons"> 
+
+    <!-- 🔍 SEARCH -->
+    <div class="search-container">
+        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}" onclick="toggleSearch()">
+
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search products..."
+            onkeyup="searchProducts()"
+        >
+    </div>
+
+    <!-- 🛒 CART -->
+    <a href="/cart">
+        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
+    </a>
+
+</div>
 <a href="/cart">
   <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}" alt="Cart">
 </a>
@@ -129,6 +147,57 @@ function filter(){
 
 document.getElementById("typeFilter").addEventListener("change", filter);
 document.getElementById("priceFilter").addEventListener("change", filter);
+
+let allProducts = [];
+
+// 🔥 load products from database
+fetch("/items")
+.then(res => res.json())
+.then(data => {
+    allProducts = data;
+});
+
+// 🔥 toggle search box
+function toggleSearch(){
+    document.getElementById("searchInput").classList.toggle("active");
+}
+
+// 🔥 search function
+function searchProducts(){
+    const query = document.getElementById("searchInput").value.toLowerCase();
+
+    const filtered = allProducts.filter(item =>
+        item.name.toLowerCase().includes(query) ||
+        item.type.toLowerCase().includes(query)
+    );
+
+    displaySearchResults(filtered);
+}
+
+// 🔥 display results (reuses grid)
+function displaySearchResults(products){
+    const grid = document.getElementById("product-grid");
+
+    if(!grid) return; // prevents breaking other pages
+
+    grid.innerHTML = "";
+
+    products.forEach(item=>{
+        const product = document.createElement("a");
+        product.classList.add("grid-item");
+        product.href = "/product/" + item.id;
+
+        product.innerHTML = `
+            <img src="${item.image}">
+            <div class="overlay">
+                <span>${item.name.replaceAll("_"," ")}</span>
+            </div>
+        `;
+
+        grid.appendChild(product);
+    });
+}
+
 </script>
 
 </body>

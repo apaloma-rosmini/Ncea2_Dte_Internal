@@ -21,12 +21,7 @@
     </ul>
 
     <div class="nav-icons"> 
-        <img src="{{ url_for('static', filename='images/Navbar/search.png') }}">
-<a href="/cart">
-  <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}" alt="Cart">
-</a>
-</a>
-</a>
+        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
     </div>
 </nav>
 
@@ -77,41 +72,31 @@
 </footer>
 
 <!-- 🔥 FIXED JAVASCRIPT -->
-<button onclick="addToCart()">Add to Cart</button>
-
 <script>
 fetch("/items")
   .then(res => res.json())
   .then(data => {
-
-    console.log("DATA:", data); // 🔥 debug
-
     const grid = document.getElementById("product-grid");
-
-    if (!data || data.length === 0) {
-        grid.innerHTML = "<p>No products found</p>";
-        return;
-    }
 
     data.slice(0, 6).forEach(item => {
 
       const product = document.createElement("a");
       product.classList.add("grid-item");
+
+      // 🔥 THIS IS THE IMPORTANT FIX
       product.href = "/product/" + item.id;
 
       product.innerHTML = `
-        <img src="${item.image}">
+        <img src="${item.image}" alt="${item.name}">
         <div class="overlay">
-            <span>${item.name.replaceAll("_"," ")}</span>
+            <span>${item.name.replace("Catholic_", "").replaceAll("_", " ")}</span>
         </div>
       `;
 
       grid.appendChild(product);
     });
   })
-  .catch(err => {
-    console.log("FETCH ERROR:", err);
-  });
+  .catch(err => console.log("ERROR:", err));
 </script>
 
 </body>
