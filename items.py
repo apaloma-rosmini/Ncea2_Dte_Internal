@@ -90,3 +90,11 @@ def single_item(id):
 # ---------- RUN ----------
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/cart")
+def cart():
+    return render_template("cart.html")
+
+@app.route("/checkout")
+def checkout():
+    return render_template("checkout.html")

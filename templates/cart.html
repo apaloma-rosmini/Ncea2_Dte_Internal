@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+</head>
+<body>
+
+<h1>Your Cart</h1>
+
+<div id="cart"></div>
+
+<h2 id="total"></h2>
+
+<a href="/checkout">
+    <button>Checkout</button>
+</a>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const container = document.getElementById("cart");
+
+let total = 0;
+
+cart.forEach(item=>{
+    total += item.price;
+
+    container.innerHTML += `
+        <div class="item">
+            <img src="${item.image}" width="100">
+            <h3>${item.name}</h3>
+            <p>$${item.price}</p>
+        </div>
+    `;
+});
+
+document.getElementById("total").textContent = "Total: $" + total;
+</script>
+
+</body>
+</html>
