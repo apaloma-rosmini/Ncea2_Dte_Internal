@@ -80,30 +80,38 @@
 <button onclick="addToCart()">Add to Cart</button>
 
 <script>
-let currentItem = {};
+fetch("/items")
+  .then(res => res.json())
+  .then(data => {
 
-const id = window.location.pathname.split("/").pop();
+    console.log("DATA:", data); // 🔥 debug
 
-fetch(`/item/${id}`)
-.then(res=>res.json())
-.then(item=>{
-    currentItem = item;
+    const grid = document.getElementById("product-grid");
 
-    document.getElementById("img").src = item.image;
-    document.getElementById("name").textContent = item.name.replaceAll("_"," ");
-    document.getElementById("price").textContent = "$" + item.price;
-    document.getElementById("desc").textContent = item.description;
-});
+    if (!data || data.length === 0) {
+        grid.innerHTML = "<p>No products found</p>";
+        return;
+    }
 
-function addToCart(){
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    data.slice(0, 6).forEach(item => {
 
-    cart.push(currentItem);
+      const product = document.createElement("a");
+      product.classList.add("grid-item");
+      product.href = "/product/" + item.id;
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+      product.innerHTML = `
+        <img src="${item.image}">
+        <div class="overlay">
+            <span>${item.name.replaceAll("_"," ")}</span>
+        </div>
+      `;
 
-    alert("Added to cart!");
-}
+      grid.appendChild(product);
+    });
+  })
+  .catch(err => {
+    console.log("FETCH ERROR:", err);
+  });
 </script>
 
 </body>
