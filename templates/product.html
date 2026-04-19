@@ -79,16 +79,51 @@
     </div>
 </footer>
 <script>
+let currentItem = null;
+
 const id = window.location.pathname.split("/").pop();
 
+// 🔥 LOAD PRODUCT
 fetch(`/item/${id}`)
-.then(res=>res.json())
-.then(item=>{
+.then(res => res.json())
+.then(item => {
+
+    if(item.error){
+        alert("Product not found");
+        return;
+    }
+
+    currentItem = item;
+
     document.getElementById("img").src = item.image;
     document.getElementById("name").textContent = item.name.replaceAll("_"," ");
     document.getElementById("price").textContent = "$" + item.price;
     document.getElementById("desc").textContent = item.description;
-});
+})
+.catch(err => console.log("ERROR:", err));
+
+
+// 🔥 ADD TO CART (FIXED)
+function addToCart(){
+
+    if(!currentItem){
+        alert("Product not loaded yet!");
+        return;
+    }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        id: currentItem.id,
+        name: currentItem.name,
+        price: Number(currentItem.price),
+        image: currentItem.image
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
+}
 </script>
 
 </body>
