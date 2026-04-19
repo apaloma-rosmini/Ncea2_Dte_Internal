@@ -107,7 +107,7 @@
 // GET CART
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// 🔥 GROUP ITEMS (no duplicates)
+// 🔥 GROUP ITEMS
 let grouped = {};
 
 cart.forEach(item => {
@@ -136,19 +136,43 @@ Object.values(grouped).forEach(item => {
     div.innerHTML = `
         <img src="${item.image}">
         <div class="cart-info">
-            <h3>${item.name.replace("Catholic_", "").replace("_", " ")}</h3>
+            <h3>${item.name.replaceAll("_"," ")}</h3>
+
             <p>Quantity: x${item.quantity}</p>
-            <p class="cart-price">$${item.price.toFixed(2)} each</p>
+
+            <p>$${item.price.toFixed(2)} each</p>
+
             <p><strong>$${itemTotal.toFixed(2)}</strong></p>
+
+            <!-- 🔥 DELETE BUTTON -->
+            <button onclick="removeOne(${item.id})">Remove 1</button>
         </div>
     `;
 
     container.appendChild(div);
 });
 
-// TOTAL PRICE (2DP)
+// TOTAL
 document.getElementById("total-price").innerText =
     "Total: $" + total.toFixed(2);
+
+
+// 🔥 REMOVE ONE ITEM FUNCTION
+function removeOne(id){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // find index of ONE item to remove
+    let index = cart.findIndex(item => item.id === id);
+
+    if(index !== -1){
+        cart.splice(index, 1); // remove ONLY one
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    location.reload(); // refresh cart
+}
 </script>
 
 </body>
