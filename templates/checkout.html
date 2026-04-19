@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+</head>
+<body>
+
+<h1>Checkout</h1>
+
+<form onsubmit="purchase(event)">
+    <input type="text" placeholder="First Name" required><br>
+    <input type="text" placeholder="Last Name" required><br>
+    <input type="text" placeholder="Suburb" required><br>
+    <input type="text" placeholder="Address" required><br>
+
+    <h2 id="total"></h2>
+
+    <button type="submit">Purchase</button>
+</form>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let total = cart.reduce((sum, item)=> sum + item.price, 0);
+
+document.getElementById("total").textContent = "Total: $" + total;
+
+function purchase(e){
+    e.preventDefault();
+
+    alert("Purchase successful!");
+
+    // 🔥 CLEAR CART
+    localStorage.removeItem("cart");
+
+    // 🔥 REDIRECT HOME
+    window.location.href = "/";
+}
+</script>
+
+</body>
+</html>
