@@ -23,7 +23,7 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let total = cart.reduce((sum, item)=> sum + item.price, 0);
 
-document.getElementById("total").textContent = "Total: $" + total;
+document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
 
 function purchase(e){
     e.preventDefault();
