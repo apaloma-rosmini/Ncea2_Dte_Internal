@@ -1,55 +1,155 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cart</title>
-</head>
-<body>
-<button onclick="goBack()" class="back-btn">← Back</button>
-<h1>Your Cart</h1>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div id="cart"></div>
-<h2 id="total"></h2>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
-<a href="/checkout"><button>Checkout</button></a>
+<title>Cart</title>
 
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-const container = document.getElementById("cart");
-const totalText = document.getElementById("total");
-
-if(cart.length === 0){
-    container.innerHTML = "<h2>Your cart is empty</h2>";
-}else{
-    let total = 0;
-
-    cart.forEach(item=>{
-
-        let itemTotal = item.price * item.quantity;
-        total += itemTotal;
-
-        container.innerHTML += `
-            <div class="item">
-                <img src="${item.image}" width="100">
-
-                <div>
-                    <h3>${item.name.replaceAll("_"," ")}</h3>
-                    <p>Quantity: x${item.quantity}</p>
-                    <p>Price: $${item.price.toFixed(2)}</p>
-                    <p><strong>Total: $${itemTotal.toFixed(2)}</strong></p>
-                </div>
-            </div>
-        `;
-    });
-
-    totalText.textContent = "Total: $" + total.toFixed(2);
+<style>
+.cart-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
 }
 
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
 
+.cart-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
 
+.cart-info {
+    flex: 1;
+}
+
+.cart-info h3 {
+    margin: 0;
+}
+
+.cart-price {
+    font-weight: bold;
+}
+
+.total-section {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.back-btn {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">  
+    <div class="logo">Walk By Faith</div>
+    
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/collection">Shop Collection</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-icons"> 
+        <a href="/cart">
+            <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
+        </a>
+    </div>
+</nav>
+
+<div class="cart-container">
+
+    <!-- 🔙 BACK BUTTON -->
+    <button class="btn back-btn" onclick="window.history.back()">← Back</button>
+
+    <h1>Your Cart</h1>
+
+    <div id="cart-items"></div>
+
+    <div class="total-section">
+        <h2 id="total-price">Total: $0.00</h2>
+        <a href="/checkout">
+            <button class="btn">Checkout</button>
+        </a>
+    </div>
+
+</div>
+
+<script>
+// GET CART
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// 🔥 GROUP ITEMS (no duplicates)
+let grouped = {};
+
+cart.forEach(item => {
+    if (!grouped[item.id]) {
+        grouped[item.id] = {
+            ...item,
+            quantity: 1
+        };
+    } else {
+        grouped[item.id].quantity++;
+    }
+});
+
+const container = document.getElementById("cart-items");
+let total = 0;
+
+// DISPLAY ITEMS
+Object.values(grouped).forEach(item => {
+
+    let itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+
+    div.innerHTML = `
+        <img src="${item.image}">
+        <div class="cart-info">
+            <h3>${item.name.replace("Catholic_", "").replace("_", " ")}</h3>
+            <p>Quantity: x${item.quantity}</p>
+            <p class="cart-price">$${item.price.toFixed(2)} each</p>
+            <p><strong>$${itemTotal.toFixed(2)}</strong></p>
+        </div>
+    `;
+
+    container.appendChild(div);
+});
+
+// TOTAL PRICE (2DP)
+document.getElementById("total-price").innerText =
+    "Total: $" + total.toFixed(2);
 </script>
-
 
 </body>
 </html>
