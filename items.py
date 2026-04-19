@@ -85,7 +85,37 @@ def single_item(id):
     except Exception as e:
         print("ERROR /item:", e)
         return jsonify({"error": "Server error"}), 500
+    
+from flask import Flask, render_template, jsonify
+import sqlite3
 
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("home.html")
+
+@app.route("/collection")
+def collection():
+    return render_template("collection.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+# 🔥 ADD THESE
+@app.route("/cart")
+def cart():
+    return render_template("cart.html")
+
+@app.route("/checkout")
+def checkout():
+    return render_template("checkout.html")
+
+# (your /items and /item/<id> routes here)
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 # ---------- RUN ----------
 if __name__ == "__main__":

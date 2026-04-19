@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+  <meta charset="UTF-8">
+  <title>Cart</title>
 </head>
 <body>
 
 <h1>Your Cart</h1>
 
 <div id="cart"></div>
-
 <h2 id="total"></h2>
 
-<a href="/checkout">
-    <button>Checkout</button>
-</a>
+<a href="/checkout"><button>Checkout</button></a>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const container = document.getElementById("cart");
+const totalEl = document.getElementById("total");
 
-let total = 0;
-
-cart.forEach(item=>{
-    total += item.price;
-
+if (cart.length === 0) {
+  container.innerHTML = "<p>Your cart is empty</p>";
+} else {
+  let total = 0;
+  cart.forEach(item => {
+    total += Number(item.price || 0);
     container.innerHTML += `
-        <div class="item">
-            <img src="${item.image}" width="100">
-            <h3>${item.name}</h3>
-            <p>$${item.price}</p>
-        </div>
+      <div>
+        <img src="${item.image}" width="80">
+        <p>${(item.name || "").replaceAll("_"," ")}</p>
+        <p>$${item.price}</p>
+      </div>
+      <hr>
     `;
-});
-
-document.getElementById("total").textContent = "Total: $" + total;
+  });
+  totalEl.textContent = "Total: $" + total;
+}
 </script>
 
 </body>
