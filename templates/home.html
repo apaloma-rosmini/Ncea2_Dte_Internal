@@ -22,7 +22,9 @@
 
     <div class="nav-icons"> 
         <img src="{{ url_for('static', filename='images/Navbar/search.png') }}">
-        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
+<a href="/cart">
+    <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
+</a>
     </div>
 </nav>
 
@@ -73,31 +75,33 @@
 </footer>
 
 <!-- 🔥 FIXED JAVASCRIPT -->
+<button onclick="addToCart()">Add to Cart</button>
+
 <script>
-fetch("/items")
-  .then(res => res.json())
-  .then(data => {
-    const grid = document.getElementById("product-grid");
+let currentItem = {};
 
-    data.slice(0, 6).forEach(item => {
+const id = window.location.pathname.split("/").pop();
 
-      const product = document.createElement("a");
-      product.classList.add("grid-item");
+fetch(`/item/${id}`)
+.then(res=>res.json())
+.then(item=>{
+    currentItem = item;
 
-      // 🔥 THIS IS THE IMPORTANT FIX
-      product.href = "/product/" + item.id;
+    document.getElementById("img").src = item.image;
+    document.getElementById("name").textContent = item.name.replaceAll("_"," ");
+    document.getElementById("price").textContent = "$" + item.price;
+    document.getElementById("desc").textContent = item.description;
+});
 
-      product.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
-        <div class="overlay">
-            <span>${item.name.replace("Catholic_", "").replaceAll("_", " ")}</span>
-        </div>
-      `;
+function addToCart(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      grid.appendChild(product);
-    });
-  })
-  .catch(err => console.log("ERROR:", err));
+    cart.push(currentItem);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
+}
 </script>
 
 </body>
