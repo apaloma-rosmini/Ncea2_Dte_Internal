@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
 </head>
 <body>
-
+<button onclick="goBack()" class="back-btn">← Continue Shopping</button>
 <h1>Checkout</h1>
 
 <form onsubmit="purchase(event)">
@@ -36,6 +36,11 @@ function purchase(e){
     // 🔥 REDIRECT HOME
     window.location.href = "/";
 }
+
+function goBack(){
+    window.history.back();
+}
+
 </script>
 
 </body>

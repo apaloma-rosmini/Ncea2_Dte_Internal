@@ -5,7 +5,7 @@
   <title>Cart</title>
 </head>
 <body>
-
+<button onclick="goBack()" class="back-btn">← Back</button>
 <h1>Your Cart</h1>
 
 <div id="cart"></div>
@@ -35,6 +35,11 @@ if (cart.length === 0) {
   });
   totalEl.textContent = "Total: $" + total;
 }
+
+function goBack(){
+    window.history.back();
+}
+
 </script>
 
 </body>
