@@ -85,7 +85,7 @@ let currentItem = null;
 
 const id = window.location.pathname.split("/").pop();
 
-// 🔥 LOAD PRODUCT
+//  LOAD PRODUCT
 fetch(`/item/${id}`)
 .then(res => res.json())
 .then(item => {

@@ -4,86 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
 
 <title>Cart</title>
 
-<style>
-.cart-container {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    border-bottom: 1px solid #ddd;
-    padding: 20px 0;
-}
-
-.cart-item img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-}
-
-.cart-info {
-    flex: 1;
-}
-
-.cart-info h3 {
-    margin: 0;
-}
-
-.cart-price {
-    font-weight: bold;
-}
-
-.total-section {
-    text-align: right;
-    margin-top: 30px;
-}
-
-.btn {
-    padding: 12px 25px;
-    background: black;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.btn:hover {
-    opacity: 0.8;
-}
-
-.back-btn {
-    margin-bottom: 20px;
-    display: inline-block;
-}
-</style>
 
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">  
-    <div class="logo">Walk By Faith</div>
-    
-    <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/collection">Shop Collection</a></li>
-        <li><a href="/contact">Contact</a></li>
-    </ul>
-
-    <div class="nav-icons"> 
-        <a href="/cart">
-            <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
-        </a>
-    </div>
-</nav>
 
 <div class="cart-container">
 

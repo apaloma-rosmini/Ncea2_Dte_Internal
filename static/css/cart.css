@@ -1,12 +1,47 @@
-body { font-family: Arial; padding: 20px; }
-
-.item {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-  align-items: center;
+/* Base */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
+/* Cart Container */
+.cart-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* Each Cart Item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+/* Product Image */
+.cart-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain; /* shows full image */
+}
+
+/* Info Section */
+.cart-info {
+  flex: 1;
+}
+
+.cart-info h3 {
+  margin: 0;
+}
+
+/* Price */
+.cart-price {
+  font-weight: bold;
+}
+
+/* Remove Button */
 .cart-info button {
   margin-top: 10px;
   padding: 8px 15px;
@@ -14,8 +49,37 @@ body { font-family: Arial; padding: 20px; }
   color: white;
   border: none;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .cart-info button:hover {
   opacity: 0.8;
+}
+
+/* Total Section */
+.total-section {
+  text-align: right;
+  margin-top: 30px;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px 25px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Back Button */
+.back-btn {
+  margin-bottom: 20px;
+  display: inline-block;
+  text-decoration: none;
 }
