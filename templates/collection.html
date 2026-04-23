@@ -11,8 +11,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/collection.css') }}">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/collection.css') }}"> <!-- CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet"> <!-- Font -->
 <title>Collection</title>
 </head>
 <body>
@@ -31,94 +31,104 @@
     </div>
 </nav>
 
-<!-- HEADER -->
+<!-- Header -->
 <header class="header">
     <h1>Our Collection</h1>
     <p>Free Shipping On The House!<br>(Except Quentin)</p>
 </header>
 
-<!-- FILTER -->
+<!-- Filter -->
 <section class="filters">
-    <select id="typeFilter">
-        <option value="all">All</option>
-        <option value="T-Shirt">T-Shirts</option>
-        <option value="Outerwear">Outerwear</option>
-        <option value="Pants">Pants</option>
+    <select id="typeFilter"> <!-- Type of Clothing -->
+         <option value="all">All</option>
+         <option value="T-Shirt">T-Shirts</option>
+         <option value="Outerwear">Outerwear</option>
+         <option value="Pants">Pants</option>
     </select>
 
-    <select id="priceFilter">
-        <option value="default">Sort Price</option>
-        <option value="low">Low → High</option>
-        <option value="high">High → Low</option>
+    <select id="priceFilter"> <!-- Price Filter -->
+            <option value="default">Sort Price</option>
+            <option value="low">Low → High</option>
+            <option value="high">High → Low</option>
     </select>
 </section>
 
-<!-- GRID -->
+<!-- Product 3x2 Grid -->
 <section class="grid" id="grid"></section>
 
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
         
-        <div class="footer-column">
-            <h2>Walk By Faith</h2>
-            <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
-        </div>
+     <!-- Column 1 -->   
+    <div class="footer-column">
+        <h2>Walk By Faith</h2>
+        <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
+    </div>
 
-        <div class="footer-column">
-            <h3>Pages</h3>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/collection">Shop Collection</a></li>
-            </ul>
-        </div>
+    <!-- Column 2 -->
+    <div class="footer-column">
+        <h3>Pages</h3>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/collection">Shop Collection</a></li>
+        </ul>
+    </div>
 
-        <div class="footer-column">
-            <h3>Contact</h3>
-            <p>Email: 21110@rosmini.school.nz</p>
-            <p>Phone: +64 6 6767 6767</p>
-            <p>Auckland, New Zealand</p>
-        </div>
+    <!-- Cplumn 3 -->
+    <div class="footer-column">
+        <h3>Contact</h3>
+        <p>Email: 21110@rosmini.school.nz</p>
+        <p>Phone: +64 6 6767 6767</p>
+        <p>Auckland, New Zealand</p>
+    </div>
 
     </div>
 </footer>
 
+<!-- Javascript -->
 <script>
-let items = [];
+let items = []; /* Creates a list of products  */
 
+/* Fetches Products and displays */
 fetch("/items")
 .then(res => res.json())
 .then(data => {
-    items = data;
-    show(items);
+    items = data; /* Saves items to the global array  */
+    show(items); /* Shows the items */
 });
 
 function show(data){
     const grid = document.getElementById("grid");
-    grid.innerHTML = "";
+    grid.innerHTML = ""; /* Gets rid of duplicates  */
 
-    data.forEach(item=>{
-        grid.innerHTML += `
-        <a href="/product/${item.id}" class="card">
-            <img src="${item.image}">
-            <div class="info">
-                <h3>${item.name.replaceAll("_"," ")}</h3>
-                <p>$${item.price}</p>
-            </div>
-        </a>`;
-    });
+    /* Creates a card display for each item  */
+
+data.forEach(item=>{
+    grid.innerHTML += `
+<   a href="/product/${item.id}" class="card">
+        <img src="${item.image}">
+        <div class="info">
+            <h3>${item.name.replaceAll("_"," ")}</h3>
+            <p>$${item.price}</p>
+        </div>
+    </a>`;
+});
 }
 
+/* Filter Script  */
 function filter(){
-    let type = document.getElementById("typeFilter").value;
-    let price = document.getElementById("priceFilter").value;
+    let type = document.getElementById("typeFilter").value; /* Searches ID for type  */
+    let price = document.getElementById("priceFilter").value; /* Searches ID for price */
 
     let filtered = [...items];
 
+    /* Type Filter  */
     if(type !== "all"){
         filtered = filtered.filter(i=>i.type === type);
     }
 
+    /* Price Filters sorts by ascending/descending*/
     if(price === "low"){
         filtered.sort((a,b)=>a.price-b.price);
     }
