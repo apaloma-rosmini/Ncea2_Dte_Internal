@@ -99,7 +99,7 @@ fetch("/items")  // Gets list of products
       product.innerHTML = `
         <img src="${item.image}" alt="${item.name}">
         <div class="overlay">
-            <span>${item.name.replace("Catholic_", "").replaceAll("_", " ")}</span>  // Removes Catholic and Spaces 
+            <span>${item.name.replace("Catholic_", "").replaceAll("_", " ")}</span>  
         </div> 
       `;
       grid.appendChild(product); // Creates Product Link
