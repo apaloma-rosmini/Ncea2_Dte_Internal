@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/product.css') }}"> <!-- CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet"> <!-- Font -->
 <title>Product</title>
 </head>
 <body>
@@ -17,6 +17,7 @@
         <li><a href="/collection">Shop Collection</a></li>
     </ul>
 
+    <!-- Navbar Icons -->
     <div class="nav-icons"> 
 <a href="/cart">
   <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}" alt="Cart">
@@ -26,29 +27,31 @@
 </nav>
 
 
-
+<!-- Product Containers -->
 <section class="product-container">
 
-    <!-- IMAGE -->
+    <!-- Image -->
     <div class="product-image">
         <img id="img">
     </div>
 
-    <!-- DETAILS -->
+    <!-- Product Details -->
     <div class="product-details">
         <h1 id="name"></h1>
         <p id="price"></p>
         <p id="desc"></p>
-
-        <select>
-            <option>Size</option>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-        </select>
-
+    
+    <!-- Select Option for the users size -->
+    <select>
+        <option>Size</option>
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+    </select>
+    <!--The user can't buy a less than 1 -->       
         <input type="number" value="1" min="1">
 
+     <!-- Clickable button that adds to the cart -->       
 <button onclick="addToCart()">Add to Cart</button>
     </div>
 
@@ -58,12 +61,12 @@
 <footer class="footer">
     <div class="footer-container">
         
-        <div class="footer-column">
+        <div class="Column 1">
             <h2>Walk By Faith</h2>
             <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
         </div>
 
-        <div class="footer-column">
+        <div class="Column 2">
             <h3>Pages</h3>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -71,7 +74,7 @@
             </ul>
         </div>
 
-        <div class="footer-column">
+        <div class="Column 3">
             <h3>Contact</h3>
             <p>Email: 21110@rosmini.school.nz</p>
             <p>Phone: +64 6 6767 6767</p>
@@ -80,23 +83,31 @@
 
     </div>
 </footer>
+
+
+<!--javascript! -->       
 <script>
+
+//  Creates a variable that holds the users information from the server
 let currentItem = null;
 
+//  Gets the id from the URL
 const id = window.location.pathname.split("/").pop();
 
-//  LOAD PRODUCT
+//  It gets the product ID and details from server
 fetch(`/item/${id}`)
 .then(res => res.json())
-.then(item => {
+.then(item => { 
 
+    //  If item not found it displays product not found
     if(item.error){
         alert("Product not found");
         return;
     }
-
+    //  Saves the item to the variable
     currentItem = item;
 
+    //  Gets data from database and puts it into the html tags
     document.getElementById("img").src = item.image;
     document.getElementById("name").textContent = item.name.replaceAll("_"," ");
     document.getElementById("price").textContent = "$" + item.price;
@@ -105,16 +116,18 @@ fetch(`/item/${id}`)
 .catch(err => console.log("ERROR:", err));
 
 
-// 🔥 ADD TO CART (FIXED)
+// Add to cart functions
 function addToCart(){
-
+    
     if(!currentItem){
-        alert("Product not loaded yet!");
+        alert("Product not loaded yet!"); //  if items not loaded it displays products not loaded
         return;
     }
 
+    //  Starts a new cart list or adds to existing cart
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    //  Adds the product details to the cart
     cart.push({
         id: currentItem.id,
         name: currentItem.name,
@@ -122,9 +135,9 @@ function addToCart(){
         image: currentItem.image
     });
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cart", JSON.stringify(cart)); //  Saves the list to the server
 
-    alert("Added to cart!");
+    alert("Added to cart!");  //  Message so that the user knows it was added to cart!!!
 }
 </script>
 

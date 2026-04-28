@@ -75,7 +75,7 @@
         </ul>
     </div>
 
-    <!-- Cplumn 3 -->
+    <!-- Column 3 -->
     <div class="footer-column">
         <h3>Contact</h3>
         <p>Email: 21110@rosmini.school.nz</p>
@@ -121,7 +121,7 @@ function filter(){
     let type = document.getElementById("typeFilter").value; /* Searches ID for type  */
     let price = document.getElementById("priceFilter").value; /* Searches ID for price */
 
-    let filtered = [...items];
+    let filtered = [...items]; 
 
     /* Type Filter  */
     if(type !== "all"){
@@ -136,9 +136,10 @@ function filter(){
         filtered.sort((a,b)=>b.price-a.price);
     }
 
-    show(filtered);
+    show(filtered); 
 }
 
+/* Watches for the user on the dropdown filter  */
 document.getElementById("typeFilter").addEventListener("change", filter);
 document.getElementById("priceFilter").addEventListener("change", filter);
 </script>

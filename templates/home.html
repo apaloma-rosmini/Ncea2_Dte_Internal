@@ -84,19 +84,20 @@
 
 <script>
 fetch("/items")  // Gets list of products
-  .then(res => res.json()) // Converts into a JSON object
+  .then(res => res.json()) // Converts it into a a Javascript object
   .then(data => {
-    const grid = document.getElementById("product-grid");
+    const grid = document.getElementById("product-grid"); // Connects to div in HTML for product-grid
 
     data.slice(0, 6).forEach(item => { // This makes it so that the first 6 items display
 
+    // Creates the grid item and the <a> tag makes it clickable
       const product = document.createElement("a");
       product.classList.add("grid-item");
 
-      product.href = "/product/" + item.id;
+      product.href = "/product/" + item.id; // Creates a product id and url for the item
 
-
-      product.innerHTML = `
+    // This is for setting up the image display such as the image and item name
+      product.innerHTML = ` 
         <img src="${item.image}" alt="${item.name}">
         <div class="overlay">
             <span>${item.name.replace("Catholic_", "").replaceAll("_", " ")}</span>  
