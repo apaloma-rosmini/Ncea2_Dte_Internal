@@ -105,14 +105,14 @@ function show(data){
     /* Creates a card display for each item  */
 
 data.forEach(item=>{
-    grid.innerHTML += `
-<   a href="/product/${item.id}" class="card">
-        <img src="${item.image}">
-        <div class="info">
-            <h3>${item.name.replaceAll("_"," ")}</h3>
-            <p>$${item.price}</p>
-        </div>
-    </a>`;
+grid.innerHTML += `
+<a href="/product/${item.id}" class="card">
+    <img src="${item.image}">
+    <div class="info">
+        <h3>${item.name.replaceAll("_"," ")}</h3>
+        <p>$${item.price}</p>
+    </div>
+</a>`;
 });
 }
 

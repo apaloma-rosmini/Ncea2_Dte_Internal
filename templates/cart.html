@@ -22,15 +22,16 @@
 
 <div class="cart-container">
 
-    <!-- BACK BUTTON -->
-    <button class="btn back-btn" onclick="window.history.back()">← Back</button>     <!-- Back button to previous page -->
+<!-- Back Button -->
+<button class="btn back-btn" onclick="window.history.back()">← Back</button>     <!-- Back button to previous page -->
 
     <h1>Your Cart</h1>
 
     <div id="cart-items"></div>
 
+    <!-- Display Total Section -->
     <div class="total-section">
-        <h2 id="total-price">Total: $0.00</h2>
+        <h2 id="total-price">Total: $0.00</h2>     <!-- Price starts at $0.00 -->
         <a href="/checkout">
             <button class="btn">Checkout</button>
         </a>
@@ -39,10 +40,10 @@
 </div>
 
 <script>
-// GET CART
+// Retrieves Data from Database
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// 🔥 GROUP ITEMS
+// Groups duplicate items and increases quality
 let grouped = {};
 
 cart.forEach(item => {
@@ -56,18 +57,20 @@ cart.forEach(item => {
     }
 });
 
+
 const container = document.getElementById("cart-items");
 let total = 0;
 
-// DISPLAY ITEMS
+// Gets items from database and displays items
 Object.values(grouped).forEach(item => {
 
     let itemTotal = item.price * item.quantity;
-    total += itemTotal;
+    total += itemTotal; // Times price of item * quantity which eqluals the total 
 
     const div = document.createElement("div");
-    div.classList.add("cart-item");
+    div.classList.add("cart-item");  // Puts the cart items into css 
 
+    // HTML
     div.innerHTML = `
         <img src="${item.image}">
         <div class="cart-info">
@@ -79,25 +82,25 @@ Object.values(grouped).forEach(item => {
 
             <p><strong>$${itemTotal.toFixed(2)}</strong></p>
 
-            <!-- 🔥 DELETE BUTTON -->
+            <!-- Remove button -->
             <button onclick="removeOne(${item.id})">Remove 1</button>
         </div>
     `;
-
+        // Adds the div into a container in the webpage
     container.appendChild(div);
 });
 
-// TOTAL
+// The total price
 document.getElementById("total-price").innerText =
     "Total: $" + total.toFixed(2);
 
 
-// 🔥 REMOVE ONE ITEM FUNCTION
+// Function to remove items
 function removeOne(id){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // find index of ONE item to remove
+    // find index of one of the items to remove
     let index = cart.findIndex(item => item.id === id);
 
     if(index !== -1){

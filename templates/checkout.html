@@ -7,18 +7,22 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
-</head>
-<body>
-<button onclick="goBack()" class="back-btn">← Continue Shopping</button>
-<h1>Checkout</h1>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}"> <!--CSS  -->
+    </head>
 
-<form onsubmit="purchase(event)">
-    <input type="text" placeholder="First Name" required><br>
-    <input type="text" placeholder="Last Name" required><br>
-    <input type="text" placeholder="Suburb" required><br>
-    <input type="text" placeholder="Address" required><br>
+<body>
+
+    <button onclick="goBack()" class="back-btn">←-- Continue Shopping</button>       <!-- Back button to previous page -->
+
+    <h1>Checkout</h1>
+
+          <!-- Creates a form for the user to enter details -->
+    <form onsubmit="purchase(event)">
+        <input type="text" placeholder="First Name" required><br>
+        <input type="text" placeholder="Last Name" required><br>
+        <input type="text" placeholder="Suburb" required><br>
+        <input type="text" placeholder="Address" required><br>
 
     <h2 id="total"></h2>
 
@@ -26,24 +30,30 @@
 </form>
 
 <script>
+  // Gets items from cart from the websites memory
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+  // Sum starts at 0
 let total = cart.reduce((sum, item)=> sum + item.price, 0);
 
+  // Sets total to 2dp
 document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
 
+  // prevents page from refereshing
 function purchase(e){
     e.preventDefault();
 
+      // Confirmation Message
     alert("Purchase successful!");
 
-    // 🔥 CLEAR CART
+      // Clears the cart
     localStorage.removeItem("cart");
 
-    // 🔥 REDIRECT HOME
+    // Send back to home page
     window.location.href = "/";
 }
 
+  // Sens the user back
 function goBack(){
     window.history.back();
 }
