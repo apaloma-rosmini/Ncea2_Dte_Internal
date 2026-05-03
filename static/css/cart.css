@@ -10,14 +10,14 @@ body {
   padding: 20px;
 }
 
-/* Cart Container */
+/* Cart  */
 .cart-container {
   max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
 }
 
-/* Each Cart Item */
+/* Indivual Cart */
 .cart-item {
   display: flex;
   align-items: center;
@@ -26,12 +26,14 @@ body {
   padding: 20px 0;
 }
 
+
 /* Product Image */
 .cart-item img {
   width: 120px;
   height: 120px;
-  object-fit: contain; /* shows full image */
+  object-fit: contain; 
 }
+
 
 /* Info Section */
 .cart-info {
@@ -79,6 +81,7 @@ body {
   transition: 0.3s;
 }
 
+/* Transition Effect */
 .btn:hover {
   opacity: 0.8;
 }
