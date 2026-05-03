@@ -53,7 +53,7 @@ body {
   flex: 1; 
   display: flex;
   justify-content: flex-end; /* Push icons to the far right side */
-  gap: 15px; /* Space between the images */
+  gap: 15px; 
 }
 
 .nav-icons img {
@@ -221,7 +221,7 @@ body {
   transform: scale(1.1);
 }
 
-/* Hover Effect: Dark Overlay and Text */
+/* Hover Effect */
 .overlay {
   position: absolute;
   top: 0;

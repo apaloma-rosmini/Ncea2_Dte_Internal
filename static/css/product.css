@@ -4,22 +4,25 @@
   File:   product.css
   Date:   April 2026 */
 
-/* GLOBAL FONT RESET */
+/* Keeps all spacing consistent*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Poppins', sans-serif;
 }
+
 
 body {
   margin: 0;
   font-family: Arial;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between; /* Creates 3 sections */
@@ -31,14 +34,14 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* 1. Logo Section */
+/* Logo Section */
 .logo {
   flex: 1; 
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* 2. Middle Links Section */
+/* Middle Section */
 .nav-links {
   display: flex;
   list-style: none;
@@ -51,16 +54,16 @@ body {
   transition: 0.3s;
 }
 
-/* 3. Icons Section (Right Side) */
+/* Icons */
 .nav-icons {
   flex: 1; 
   display: flex;
-  justify-content: flex-end; /* Push icons to the far right side */
-  gap: 15px; /* Space between the images */
+  justify-content: flex-end;
+  gap: 15px; 
 }
 
 .nav-icons img {
-  width: 24px;  /* Size of the image */
+  width: 24px; 
   height: 24px;
   cursor: pointer;
   filter: brightness(0) invert(1); /* Makes black icons white */
@@ -71,7 +74,7 @@ body {
   transform: scale(1.1); /* Slight zoom on hover */
 }
 
-/* LAYOUT */
+/* Layout for Products*/
 .product-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -79,21 +82,22 @@ body {
   gap: 50px;
 }
 
-/* IMAGE FIX */
+
 .product-image img {
   width: 100%;
   height: 400px;
-  object-fit: contain; /* 🔥 NO CROPPING */
+  object-fit: contain; 
   background: #fff;
 }
 
-/* DETAILS */
+/* Product Details */
 .product-details {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Product Button */
 button {
   padding: 15px;
   background: black;
@@ -101,7 +105,7 @@ button {
   border: none;
 }
 
-/* Footer Base Styles */
+/* Footer */
 .footer {
     background-color: #000; /* Matching your streetwear aesthetic */
     color: #fff;
@@ -158,7 +162,8 @@ button {
     color: #fff;
 }
 
-/* Bottom Bar */
+
+
 .footer-bottom {
     text-align: center;
     margin-top: 50px;
@@ -168,10 +173,10 @@ button {
     color: #666;
 }
 
-/* --- Responsive Media Query --- */
+/* --- Responsive for Mobile --- */
 @media (max-width: 768px) {
     .footer-container {
-        grid-template-columns: 1fr; /* Stacks columns on mobile */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
 

@@ -4,7 +4,7 @@
   File:   collection.css
   Date:   April 2026 */
 
-/* GLOBAL FONT RESET */
+/* Keeps all spacing consistent*/
 * {
     margin: 0;
     padding: 0;
@@ -21,6 +21,7 @@ body {
   background: #f5f5f5;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between; /* Creates 3 sections */
@@ -32,19 +33,20 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* 1. Logo Section */
+/* Logo Section */
 .logo {
   flex: 1; 
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* 2. Middle Links Section */
+/* Middle Links Section */
 .nav-links {
   display: flex;
   list-style: none;
   gap: 20px;
 }
+
 
 .nav-links a {
   text-decoration: none;
@@ -52,27 +54,27 @@ body {
   transition: 0.3s;
 }
 
-/* 3. Icons Section (Right Side) */
+/* Icon Section */
 .nav-icons {
   flex: 1; 
   display: flex;
-  justify-content: flex-end; /* Push icons to the far right side */
-  gap: 15px; /* Space between the images */
+  justify-content: flex-end; 
+  gap: 15px; 
 }
 
 .nav-icons img {
-  width: 24px;  /* Size of the image */
+  width: 24px; 
   height: 24px;
   cursor: pointer;
-  filter: brightness(0) invert(1); /* Makes black icons white */
+  filter: brightness(0) invert(1);  /* Makes black icons white */
   transition: transform 0.2s;
 }
 
 .nav-icons img:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
+  transform: scale(1.1);  /* Slight zoom on hover */
 }
 
-/* HEADER */
+/* Header */
 .header {
   text-align: center;
   padding: 60px 20px;
@@ -87,7 +89,7 @@ body {
   color: gray;
 }
 
-/* FILTER */
+/* Filter Section */
 .filters {
   text-align: center;
   padding: 20px;
@@ -99,7 +101,7 @@ body {
   margin: 0 10px;
 }
 
-/* GRID */
+/* 3x2 Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -107,7 +109,7 @@ body {
   padding: 40px;
 }
 
-/* CARD */
+/* Indivudal Product */
 .card {
   text-decoration: none;
   color: black;
@@ -116,23 +118,23 @@ body {
   border-radius: 10px;
 }
 
-/* IMAGE FIX (NO CROP) */
+
 .card img {
   width: 100%;
   height: 250px;
-  object-fit: contain; /* 🔥 FIX */
+  object-fit: contain; 
   background: #fff;
 }
 
-/* INFO */
+/* Info */
 .info {
   text-align: center;
   margin-top: 10px;
 }
 
-/* Footer Base Styles */
+/* Footers */
 .footer {
-    background-color: #000; /* Matching your streetwear aesthetic */
+    background-color: #000; 
     color: #fff;
     padding: 60px 20px 20px;
     margin-top: 50px;
@@ -147,7 +149,6 @@ body {
     gap: 40px;
 }
 
-/* Column Content Styling */
 .footer-column h3 {
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -187,7 +188,7 @@ body {
     color: #fff;
 }
 
-/* Bottom Bar */
+
 .footer-bottom {
     text-align: center;
     margin-top: 50px;
@@ -197,10 +198,10 @@ body {
     color: #666;
 }
 
-/* --- Responsive Media Query --- */
+/* --- Responsive for Mobile Device --- */
 @media (max-width: 768px) {
     .footer-container {
-        grid-template-columns: 1fr; /* Stacks columns on mobile */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
 
