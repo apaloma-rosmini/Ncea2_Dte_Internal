@@ -4,17 +4,19 @@
   File:   home.css
   Date:   April 2026 */
 
-/* GLOBAL FONT RESET */
+/* Keeps all spacing consistent*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Font is consistent in the page*/
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between; /* Creates 3 sections */
@@ -26,14 +28,14 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* 1. Logo Section */
+/* Logo Section */
 .logo {
   flex: 1; 
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* 2. Middle Links Section */
+/* 2. Middle Section */
 .nav-links {
   display: flex;
   list-style: none;
@@ -46,7 +48,7 @@ body {
   transition: 0.3s;
 }
 
-/* 3. Icons Section (Right Side) */
+/* 3. Navbar Icons */
 .nav-icons {
   flex: 1; 
   display: flex;
@@ -55,96 +57,94 @@ body {
 }
 
 .nav-icons img {
-  width: 24px;  /* Size of the image */
+  width: 24px;  
   height: 24px;
   cursor: pointer;
   filter: brightness(0) invert(1); /* Makes black icons white */
-  transition: transform 0.2s;
+  transition: transform 0.2s; /* Hover effects */
 }
 
 .nav-icons img:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
+  transform: scale(1.1); /* Hover effects */
 }
 
-/* 1. The main section container */
+/* Hero section */
 .hero-section {
     width: 100%;
     position: relative;
-    overflow: hidden; /* Important for clean cropping */
+    overflow: hidden; 
 }
 
-/* 2. The container that performs the crop */
+/* Crops the hero image*/
 .hero-image-crop-container {
     position: relative;
     width: 100%;
-    /* Set a specific height to force the crop. Adjust this value (e.g., 60vh or 500px) as needed. */
-    height: 70vh; /* Using 70% of the viewport height creates a tight, cinematic crop */
+    height: 70vh; 
     overflow: hidden;
 }
 
-/* 3. The specific styling for the cropped image */
+/* Cropping image */
 .cropped-image {
     width: 100%;
-    height: 100%; /* Important: Must match the container height */
-    object-fit: cover; /* Forces the image to fill the space and auto-crop */
-    
-    /* Focus the crop on the subjects. '50% 25%' focuses the center slightly higher up. */
+    height: 100%; 
+    object-fit: cover; 
     object-position: 50% 25%;
-    
     display: block;
 }
 
-/* 4. Text and Button Overlay Styling (Positioned absolute over the crop) */
+/* 4. Button overlay */
 .hero-content {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* For centering*/
     z-index: 10;
     text-align: center;
-    width: 90%; /* Keeps text from hitting the edges on small screens */
-    color: white; /* Catholic aesthetics look great with white text on a dark base */
+    width: 90%; 
+    color: white; 
 }
 
+/* Heading 1 */
 .hero-content h1 {
-    font-size: 4rem; /* Prominent, bold H1 */
+    font-size: 4rem; 
     margin-bottom: 15px;
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 2px;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Deep shadow for maximum legibility */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Text shadow */
 }
 
 .hero-content h2 {
-    font-size: 1.75rem; /* Distinct H2 */
+    font-size: 1.75rem; 
     margin-bottom: 35px;
     font-weight: 400;
-    font-style: italic; /* A classic, reverent touch for the slogan */
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    font-style: italic; 
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);  /* Text shadow */
 }
 
-/* 5. Hero Button Styling */
+
+/* 5. Hero Button  */
 .hero-btn {
     display: inline-block;
     padding: 15px 40px;
-    background-color: transparent; /* Transparent button for a minimalist, premium look */
+    background-color: transparent; 
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
     text-transform: uppercase;
-    border: 2px solid white; /* A clean white border */
+    border: 2px solid white; 
     border-radius: 5px;
-    transition: all 0.4s ease; /* Smooth hover transition */
+    transition: all 0.4s ease; /* hover transition */
 }
 
 .hero-btn:hover {
-    background-color: white; /* Inverts on hover */
+    background-color: white; 
     color: black;
-    transform: translateY(-3px); /* Subtle lift effect */
+    transform: translateY(-3px); /* Adds a lift effect */
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
 }
-/* Ensure image stays full width */
+/* Ensures image stays full width */
 .full-width-img {
     width: 100%;
     display: block;
@@ -152,11 +152,11 @@ body {
 }
 
 
-
+/* Best sellers title*/
 .section-title {
     width: 100%;
     text-align: center;
-    padding: 60px 0 30px; /* Space above and below the title */
+    padding: 60px 0 30px; 
     background-color: #000;
 }
 
@@ -165,12 +165,12 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 3px;
-    color: white; /* Or #fff if your background is dark */
+    color: white; 
     position: relative;
     display: inline-block;
 }
 
-/* Optional: Adds a small decorative underline under "Best Sellers" */
+
 .section-title h2::after {
     content: '';
     width: 50px;
@@ -182,39 +182,41 @@ body {
     transform: translateX(-50%);
 }
 
-/* Responsive adjustment for mobile */
+/* Responsiveness for mobile */
 @media (max-width: 768px) {
   .info-container {
       flex-direction: column; /* Stacks boxes vertically on small screens */
   }
 }
 
+
+/* Product Grid */
 .product-grid {
   display: grid;
-  /* Creates 3 equal columns */
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);    /* Creates 3 columns */
   gap: 15px;
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
+  /* Individual products */
 .grid-item {
   position: relative;
-  overflow: hidden; /* Keeps the zoom effect inside the box */
+  overflow: hidden; 
   display: block;
-  aspect-ratio: 1 / 1; /* Makes the boxes perfectly square */
+  aspect-ratio: 1 / 1; 
   border-radius: 4px;
 }
 
 .grid-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Prevents images from stretching */
+  object-fit: cover; 
   transition: transform 0.5s ease; /* Smooth zoom transition */
 }
 
-/* Hover Effect: Zoom Image */
+/* Hover Effect */
 .grid-item:hover img {
   transform: scale(1.1);
 }
@@ -226,12 +228,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Transparent black */
+  background: rgba(0, 0, 0, 0.3); 
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0; /* Hidden by default */
+  opacity: 0; 
   transition: opacity 0.3s ease;
 }
 
@@ -244,10 +246,10 @@ body {
 }
 
 .grid-item:hover .overlay {
-  opacity: 1; /* Shows overlay on hover */
+  opacity: 1; 
 }
 
-/* Responsive: 2 columns on tablets, 1 column on phones */
+/* Responsiveness 2 columns on tablets 1 column on phones */
 @media (max-width: 900px) {
   .product-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -262,9 +264,12 @@ body {
 
 /* SPRINT 1 */
 
+/* Footer Section */
+
+
 /* Footer Base Styles */
 .footer {
-    background-color: #000; /* Matching your streetwear aesthetic */
+    background-color: #000; 
     color: #fff;
     padding: 60px 20px 20px;
     margin-top: 50px;
@@ -275,11 +280,11 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 40px;
 }
 
-/* Column Content Styling */
+
 .footer-column h3 {
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -319,7 +324,7 @@ body {
     color: #fff;
 }
 
-/* Bottom Bar */
+
 .footer-bottom {
     text-align: center;
     margin-top: 50px;
@@ -329,34 +334,16 @@ body {
     color: #666;
 }
 
-/* --- Responsive Media Query --- */
+/* Responsive */
 @media (max-width: 768px) {
     .footer-container {
-        grid-template-columns: 1fr; /* Stacks columns on mobile */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
 
+    
     .footer-column h3::after {
         left: 50%;
         transform: translateX(-50%);
     }
-}
-
-.search-container {
-  position: relative;
-}
-
-#searchInput {
-  position: absolute;
-  right: 0;
-  top: 40px;
-  padding: 10px;
-  width: 200px;
-  display: none;
-  border: 1px solid #ccc;
-}
-
-/* show input when active */
-#searchInput.active {
-  display: block;
 }
