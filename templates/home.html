@@ -22,23 +22,23 @@
 <nav class="navbar">  
     <div class="logo">Walk By Faith</div>
     
-    <ul class="nav-links">
+    <ul class="navbar_links">
         <li><a href="/">Home</a></li>
         <li><a href="/collection">Shop Collection</a></li>
     </ul>
 
-    <div class="nav-icons"> 
+    <div class="navbar_icon"> 
         <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
     </div>
 </nav>
-
+  
 
 <!-- Hero -->
-<header class="hero-section">
-    <div class="hero-content">
+<header class="hero_section">
+    <div class="hero_word">
         <h1>Walk By Faith</h1>
         <h2>For we walk by faith, not by sight. (2 Corinthians 5:7)</h2>
-        <a href="/collection" class="hero-btn">Shop The Collection</a>
+        <a href="/collection" class="hero_button">Shop The Collection</a>
     </div>
 
     <img src="{{ url_for('static', filename='images/Navbar/praise.JPG') }}" class="full-width-img">
@@ -46,25 +46,25 @@
 
 
 <!-- Title -->
-<section class="section-title">
+<section class="section_title">
     <h2>Best Sellers</h2>
 </section>
 
 <!-- Database Grid-->
-<section class="product-grid" id="product-grid"></section>
+<section class="product_grid" id="product_grid"></section>
 
 <!-- Footer -->
 <footer class="footer">
-    <div class="footer-container">
+    <div class="footer_container">
         
         <!-- Column 1 -->
-<div class="footer-column">
+<div class="footer_columns">
         <h2>Walk By Faith</h2>
         <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
     </div>
 
         <!-- Columnn 2 -->
-    <div class="footer-column">
+    <div class="footer_columns">
         <h3>Pages</h3>
         <ul>
             <li><a href="/">Home</a></li>
@@ -73,7 +73,7 @@
     </div>
 
         <!-- Column 3 -->
-    <div class="footer-column">
+    <div class="footer_columns">
         <h3>Contact</h3>
         <p>Email: 21110@rosmini.school.nz</p>
         <p>Phone: +64 6 6767 6767</p>
@@ -89,7 +89,7 @@
 fetch("/items")  // Gets list of products
   .then(res => res.json()) // Converts it into a a Javascript object
   .then(data => {
-    const grid = document.getElementById("product-grid"); // Connects to div in HTML for product-grid
+    const grid = document.getElementById("product_grid"); // Connects to div in HTML for product_grid
 
     data.slice(0, 6).forEach(item => { // This makes it so that the first 6 items display
 

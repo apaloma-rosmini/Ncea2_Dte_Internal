@@ -36,15 +36,14 @@ def checkout():
 
 
 
-# Database Connection
 
+
+# Database Connection
 
 def get_db_connection():
     conn = sqlite3.connect("items.db")
     conn.row_factory = sqlite3.Row
     return conn
-
-
 
 # Products
 @app.route("/items")

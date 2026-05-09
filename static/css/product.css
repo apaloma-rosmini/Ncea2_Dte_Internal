@@ -42,27 +42,27 @@ body {
 }
 
 /* Middle Section */
-.nav-links {
+.navbar_links {
   display: flex;
   list-style: none;
   gap: 20px;
 }
 
-.nav-links a {
+.navbar_links a {
   text-decoration: none;
   color: white;
   transition: 0.3s;
 }
 
 /* Icons */
-.nav-icons {
+.navbar_icon {
   flex: 1; 
   display: flex;
   justify-content: flex-end;
   gap: 15px; 
 }
 
-.nav-icons img {
+.navbar_icon img {
   width: 24px; 
   height: 24px;
   cursor: pointer;
@@ -70,12 +70,12 @@ body {
   transition: transform 0.2s;
 }
 
-.nav-icons img:hover {
+.navbar_icon img:hover {
   transform: scale(1.1); /* Slight zoom on hover */
 }
 
 /* Layout for Products*/
-.product-container {
+.product_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 50px;
@@ -91,7 +91,7 @@ body {
 }
 
 /* Product Details */
-.product-details {
+.product_details {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -114,7 +114,7 @@ button {
     font-family: Arial, sans-serif;
 }
 
-.footer-container {
+.footer_container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -123,7 +123,7 @@ button {
 }
 
 /* Column Content Styling */
-.footer-column h3 {
+.footer_columns h3 {
     font-size: 1.2rem;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -143,22 +143,22 @@ button {
     line-height: 1.6;
 }
 
-.footer-column ul {
+.footer_columns ul {
     list-style: none;
     padding: 0;
 }
 
-.footer-column ul li {
+.footer_columns ul li {
     margin-bottom: 10px;
 }
 
-.footer-column ul li a, .contact-col a {
+.footer_columns ul li a, .contact-col a {
     color: #bbb;
     text-decoration: none;
     transition: 0.3s;
 }
 
-.footer-column ul li a:hover, .contact-col a:hover {
+.footer_columns ul li a:hover, .contact-col a:hover {
     color: #fff;
 }
 
@@ -175,12 +175,12 @@ button {
 
 /* --- Responsive for Mobile --- */
 @media (max-width: 768px) {
-    .footer-container {
+    .footer_container {
         grid-template-columns: 1fr; 
         text-align: center;
     }
 
-    .footer-column h3::after {
+    .footer_columns h3::after {
         left: 50%;
         transform: translateX(-50%);
     }

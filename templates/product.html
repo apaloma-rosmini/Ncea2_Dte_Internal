@@ -12,13 +12,13 @@
 <nav class="navbar">  
     <div class="logo">Walk By Faith</div>
     
-    <ul class="nav-links">
+    <ul class="navbar_links">
         <li><a href="/">Home</a></li>
         <li><a href="/collection">Shop Collection</a></li>
     </ul>
 
     <!-- Navbar Icons -->
-    <div class="nav-icons"> 
+    <div class="navbar_icon"> 
 <a href="/cart">
   <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}" alt="Cart">
 </a>
@@ -28,7 +28,7 @@
 
 
 <!-- Product Containers -->
-<section class="product-container">
+<section class="product_container">
 
     <!-- Image -->
     <div class="product-image">
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Product Details -->
-    <div class="product-details">
+    <div class="product_details">
         <h1 id="name"></h1>
         <p id="price"></p>
         <p id="desc"></p>
@@ -44,10 +44,15 @@
     <!-- Select Option for the users size -->
     <select>
         <option>Size</option>
+        <option>XS</option>
         <option>S</option>
         <option>M</option>
         <option>L</option>
+        <option>XL</option>
+        <option>XXL</option>
     </select>
+
+    
     <!--The user can't buy a less than 1 -->       
         <input type="number" value="1" min="1">
 
@@ -59,7 +64,7 @@
 
 <!-- Footer -->
 <footer class="footer">
-    <div class="footer-container">
+    <div class="footer_container">
         
         <div class="Column 1">
             <h2>Walk By Faith</h2>

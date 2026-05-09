@@ -21,12 +21,12 @@
 <nav class="navbar">  
     <div class="logo">Walk By Faith</div>
     
-    <ul class="nav-links">
+    <ul class="navbar_links">
         <li><a href="/">Home</a></li>
         <li><a href="/collection">Shop Collection</a></li>
     </ul>
 
-    <div class="nav-icons"> 
+    <div class="navbar_icon"> 
         <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
     </div>
 </nav>
@@ -40,7 +40,7 @@
 
 <!-- Filter -->
 <section class="filters">
-    <select id="typeFilter"> <!-- Type of Clothing -->
+    <select id="filtertype"> <!-- Type of Clothing -->
          <option value="all">All</option>
          <option value="T-Shirt">T-Shirts</option>
          <option value="Outerwear">Outerwear</option>
@@ -48,10 +48,10 @@
     </select>
 
 
-    <select id="priceFilter"> <!-- Price Filter -->
-            <option value="default">Sort Price</option>
-            <option value="low">Low → High</option>
-            <option value="high">High → Low</option>
+    <select id="filterprice"> <!-- Price Filter -->
+            <option value="default">Price</option>
+            <option value="low">Low -> High</option>
+            <option value="high">High -> Low</option>
     </select>
 </section>
 
@@ -60,18 +60,18 @@
 
 <!-- Footer -->
 <footer class="footer">
-    <div class="footer-container">
+    <div class="footer_container">
         
 
      <!-- Column 1 -->   
-    <div class="footer-column">
+    <div class="footer_columns">
         <h2>Walk By Faith</h2>
         <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
     </div>
 
 
     <!-- Column 2 -->
-    <div class="footer-column">
+    <div class="footer_columns">
         <h3>Pages</h3>
         <ul>
             <li><a href="/">Home</a></li>
@@ -81,7 +81,7 @@
 
     
     <!-- Column 3 -->
-    <div class="footer-column">
+    <div class="footer_columns">
         <h3>Contact</h3>
         <p>Email: 21110@rosmini.school.nz</p>
         <p>Phone: +64 6 6767 6767</p>
@@ -123,8 +123,8 @@ grid.innerHTML += `
 
 /* Filter Script  */
 function filter(){
-    let type = document.getElementById("typeFilter").value; /* Searches ID for type  */
-    let price = document.getElementById("priceFilter").value; /* Searches ID for price */
+let type = document.getElementById("filtertype").value;
+let price = document.getElementById("filterprice").value;
 
     let filtered = [...items]; 
 
@@ -145,8 +145,8 @@ function filter(){
 }
 
 /* Watches for the user on the dropdown filter  */
-document.getElementById("typeFilter").addEventListener("change", filter);
-document.getElementById("priceFilter").addEventListener("change", filter);
+document.getElementById("filtertype").addEventListener("change", filter);
+document.getElementById("filterprice").addEventListener("change", filter);
 
 
 

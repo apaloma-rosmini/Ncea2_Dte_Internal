@@ -11,7 +11,7 @@ body {
 }
 
 /* Cart  */
-.cart-container {
+.cart_container {
   max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
@@ -65,13 +65,13 @@ body {
 }
 
 /* Total Section */
-.total-section {
+.total_section {
   text-align: right;
   margin-top: 30px;
 }
 
 /* Buttons */
-.btn {
+.button {
   padding: 12px 25px;
   background: black;
   color: white;
@@ -82,12 +82,12 @@ body {
 }
 
 /* Transition Effect */
-.btn:hover {
+.button:hover {
   opacity: 0.8;
 }
 
 /* Back Button */
-.back-btn {
+.back-button {
   margin-bottom: 20px;
   display: inline-block;
   text-decoration: none;

@@ -36,27 +36,27 @@ body {
 }
 
 /* 2. Middle Section */
-.nav-links {
+.navbar_links {
   display: flex;
   list-style: none;
   gap: 20px;
 }
 
-.nav-links a {
+.navbar_links a {
   text-decoration: none;
   color: white;
   transition: 0.3s;
 }
 
 /* 3. Navbar Icons */
-.nav-icons {
+.navbar_icon {
   flex: 1; 
   display: flex;
   justify-content: flex-end; /* Push icons to the far right side */
   gap: 15px; 
 }
 
-.nav-icons img {
+.navbar_icon img {
   width: 24px;  
   height: 24px;
   cursor: pointer;
@@ -64,12 +64,12 @@ body {
   transition: transform 0.2s; /* Hover effects */
 }
 
-.nav-icons img:hover {
+.navbar_icon img:hover {
   transform: scale(1.1); /* Hover effects */
 }
 
 /* Hero section */
-.hero-section {
+.hero_section {
     width: 100%;
     position: relative;
     overflow: hidden; 
@@ -93,7 +93,7 @@ body {
 }
 
 /* 4. Button overlay */
-.hero-content {
+.hero_word {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -105,7 +105,7 @@ body {
 }
 
 /* Heading 1 */
-.hero-content h1 {
+.hero_word h1 {
     font-size: 4rem; 
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -114,7 +114,7 @@ body {
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Text shadow */
 }
 
-.hero-content h2 {
+.hero_word h2 {
     font-size: 1.75rem; 
     margin-bottom: 35px;
     font-weight: 400;
@@ -124,7 +124,7 @@ body {
 
 
 /* 5. Hero Button  */
-.hero-btn {
+.hero_button {
     display: inline-block;
     padding: 15px 40px;
     background-color: transparent; 
@@ -138,7 +138,7 @@ body {
     transition: all 0.4s ease; /* hover transition */
 }
 
-.hero-btn:hover {
+.hero_button:hover {
     background-color: white; 
     color: black;
     transform: translateY(-3px); /* Adds a lift effect */
@@ -153,14 +153,14 @@ body {
 
 
 /* Best sellers title*/
-.section-title {
+.section_title {
     width: 100%;
     text-align: center;
     padding: 60px 0 30px; 
     background-color: #000;
 }
 
-.section-title h2 {
+.section_title h2 {
     font-size: 2.5rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -171,7 +171,7 @@ body {
 }
 
 
-.section-title h2::after {
+.section_title h2::after {
     content: '';
     width: 50px;
     height: 3px;
@@ -191,7 +191,7 @@ body {
 
 
 /* Product Grid */
-.product-grid {
+.product_grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);    /* Creates 3 columns */
   gap: 15px;
@@ -251,13 +251,13 @@ body {
 
 /* Responsiveness 2 columns on tablets 1 column on phones */
 @media (max-width: 900px) {
-  .product-grid {
+  .product_grid {
       grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .product-grid {
+  .product_grid {
       grid-template-columns: 1fr;
   }
 }
@@ -276,7 +276,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.footer-container {
+.footer_container {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
@@ -285,7 +285,7 @@ body {
 }
 
 
-.footer-column h3 {
+.footer_columns h3 {
     font-size: 1.2rem;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -305,22 +305,22 @@ body {
     line-height: 1.6;
 }
 
-.footer-column ul {
+.footer_columns ul {
     list-style: none;
     padding: 0;
 }
 
-.footer-column ul li {
+.footer_columns ul li {
     margin-bottom: 10px;
 }
 
-.footer-column ul li a, .contact-col a {
+.footer_columns ul li a, .contact-col a {
     color: #bbb;
     text-decoration: none;
     transition: 0.3s;
 }
 
-.footer-column ul li a:hover, .contact-col a:hover {
+.footer_columns ul li a:hover, .contact-col a:hover {
     color: #fff;
 }
 
@@ -336,13 +336,13 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .footer-container {
+    .footer_container {
         grid-template-columns: 1fr; 
         text-align: center;
     }
 
     
-    .footer-column h3::after {
+    .footer_columns h3::after {
         left: 50%;
         transform: translateX(-50%);
     }

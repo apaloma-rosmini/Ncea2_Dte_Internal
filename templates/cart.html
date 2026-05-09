@@ -20,20 +20,21 @@
 <body>
 
 
-<div class="cart-container">
+<div class="cart_container">
 
 <!-- Back Button -->
-<button class="btn back-btn" onclick="window.history.back()">← Back</button>     <!-- Back button to previous page -->
+<button class="button back-button" onclick="window.history.back()"> <-- Back</button>     <!-- Back button to previous page -->
 
     <h1>Your Cart</h1>
 
     <div id="cart-items"></div>
 
     <!-- Display Total Section -->
-    <div class="total-section">
-        <h2 id="total-price">Total: $0.00</h2>     <!-- Price starts at $0.00 -->
+    <div class="total_section">
+        <h2 id="total_price">Total: $0.00</h2>    <!-- Price starts at $0.00 -->
+        
         <a href="/checkout">
-            <button class="btn">Checkout</button>
+            <button class="button">Checkout</button>
         </a>
     </div>
 
@@ -91,7 +92,7 @@ Object.values(grouped).forEach(item => {
 });
 
 // The total price
-document.getElementById("total-price").innerText =
+document.getElementById("total_price").innerText =
     "Total: $" + total.toFixed(2);
 
 
