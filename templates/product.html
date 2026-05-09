@@ -42,8 +42,8 @@
         <p id="desc"></p>
     
     <!-- Select Option for the users size -->
-    <select>
-        <option>Size</option>
+    <select id="sizeSelect">
+        <option value="" disabled selected>Select Size</option>
         <option>XS</option>
         <option>S</option>
         <option>M</option>
@@ -54,7 +54,7 @@
 
     
     <!--The user can't buy a less than 1 -->       
-        <input type="number" value="1" min="1">
+<input type="number" id="quantityInput" value="1" min="1">
 
      <!-- Clickable button that adds to the cart -->       
 <button onclick="addToCart()">Add to Cart</button>
@@ -66,12 +66,12 @@
 <footer class="footer">
     <div class="footer_container">
         
-        <div class="Column 1">
+        <div class="footer_columns">
             <h2>Walk By Faith</h2>
             <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
         </div>
 
-        <div class="Column 2">
+        <div class="footer_columns">
             <h3>Pages</h3>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -79,7 +79,7 @@
             </ul>
         </div>
 
-        <div class="Column 3">
+        <div class="footer_columns">
             <h3>Contact</h3>
             <p>Email: 21110@rosmini.school.nz</p>
             <p>Phone: +64 6 6767 6767</p>
@@ -123,26 +123,43 @@ fetch(`/item/${id}`)
 
 // Add to cart functions
 function addToCart(){
-    
+
     if(!currentItem){
-        alert("Product not loaded yet!"); //  if items not loaded it displays products not loaded
+        alert("Product not loaded yet!");
         return;
     }
 
-    //  Starts a new cart list or adds to existing cart
+    // Gets selected size
+    const size = document.getElementById("sizeSelect").value;
+
+    // Prevents empty size
+    if(!size){
+        alert("Please select a size");
+        return;
+    }
+
+    // Gets quantity value
+    const quantity = Number(document.getElementById("quantityInput").value);
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    //  Adds the product details to the cart
-    cart.push({
-        id: currentItem.id,
-        name: currentItem.name,
-        price: Number(currentItem.price),
-        image: currentItem.image
-    });
+    // Adds item MULTIPLE TIMES
+    for(let i = 0; i < quantity; i++){
 
-    localStorage.setItem("cart", JSON.stringify(cart)); //  Saves the list to the server
+        cart.push({
+            id: currentItem.id,
+            name: currentItem.name,
+            price: Number(currentItem.price),
+            image: currentItem.image,
+            size: size
+        });
 
-    alert("Added to cart!");  //  Message so that the user knows it was added to cart!!!
+    }
+
+    // Save cart
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
 }
 </script>
 

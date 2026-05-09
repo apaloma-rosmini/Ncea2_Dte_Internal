@@ -41,41 +41,56 @@
 </div>
 
 <script>
-// Retrieves Data from Database
+
+// Retrieves cart data
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Groups duplicate items and increases quality
+// Groups duplicate items BY ID + SIZE
 let grouped = {};
 
 cart.forEach(item => {
-    if (!grouped[item.id]) {
-        grouped[item.id] = {
+
+    // unique key = product id + size
+    let key = item.id + "-" + item.size;
+
+    if (!grouped[key]) {
+
+        grouped[key] = {
             ...item,
             quantity: 1
         };
+
     } else {
-        grouped[item.id].quantity++;
+
+        grouped[key].quantity++;
+
     }
 });
 
-
 const container = document.getElementById("cart-items");
+
 let total = 0;
 
-// Gets items from database and displays items
+
+// Displays items
 Object.values(grouped).forEach(item => {
 
     let itemTotal = item.price * item.quantity;
-    total += itemTotal; // Times price of item * quantity which eqluals the total 
+
+    total += itemTotal;
 
     const div = document.createElement("div");
-    div.classList.add("cart-item");  // Puts the cart items into css 
 
-    // HTML
+    div.classList.add("cart-item");
+
     div.innerHTML = `
         <img src="${item.image}">
+
         <div class="cart-info">
+
             <h3>${item.name.replaceAll("_"," ")}</h3>
+
+            <p><strong>Size:</strong> ${item.size}</p>
 
             <p>Quantity: x${item.quantity}</p>
 
@@ -83,36 +98,48 @@ Object.values(grouped).forEach(item => {
 
             <p><strong>$${itemTotal.toFixed(2)}</strong></p>
 
-            <!-- Remove button -->
-            <button onclick="removeOne(${item.id})">Remove 1</button>
+            <button onclick='removeOne(${item.id}, "${item.size}")'>
+            Remove 1
+    </button>
         </div>
     `;
-        // Adds the div into a container in the webpage
+
     container.appendChild(div);
 });
 
-// The total price
+
+// Total Price
 document.getElementById("total_price").innerText =
     "Total: $" + total.toFixed(2);
 
 
-// Function to remove items
-function removeOne(id){
+// Remove ONE item
+function removeOne(id, size){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // find index of one of the items to remove
-    let index = cart.findIndex(item => item.id === id);
+    // Find SAME item + SAME size
+    let index = cart.findIndex(function(item){
 
-    if(index !== -1){
-        cart.splice(index, 1); // remove ONLY one
+        return Number(item.id) === Number(id)
+            && String(item.size) === String(size);
+
+    });
+
+    // Remove ONE item
+    if(index > -1){
+
+        cart.splice(index, 1);
+
     }
 
+    // Save updated cart
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    location.reload(); // refresh cart
+    // Reload page
+    location.reload();
 }
-</script>
 
+</script>
 </body>
 </html>
