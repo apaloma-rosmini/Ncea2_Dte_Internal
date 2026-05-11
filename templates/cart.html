@@ -45,14 +45,14 @@
 // Retrieves cart data
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Groups duplicate items BY ID + SIZE
-let grouped = {};
+
+let grouped = {};  // Groups items by size and id
 
 cart.forEach(item => {
 
-    // unique key = product id + size
-    let key = item.id + "-" + item.size;
+    let key = item.id + "-" + item.size; // Seperates items by size
 
+    // If same size add 1 quantity to the group
     if (!grouped[key]) {
 
         grouped[key] = {
@@ -62,27 +62,29 @@ cart.forEach(item => {
 
     } else {
 
-        grouped[key].quantity++;
+        grouped[key].quantity++; // If in list add 1
 
     }
 });
 
+// Gets container where cart items are listed
 const container = document.getElementById("cart-items");
 
 let total = 0;
 
 
 // Displays items
-Object.values(grouped).forEach(item => {
+Object.values(grouped).forEach(item => { // Loop through groups
 
     let itemTotal = item.price * item.quantity;
 
-    total += itemTotal;
+    total += itemTotal; // Total
 
-    const div = document.createElement("div");
+    const div = document.createElement("div"); // goes to div which holds user info
 
     div.classList.add("cart-item");
 
+    // Fills the div with information from database
     div.innerHTML = `
         <img src="${item.image}">
 
@@ -113,12 +115,12 @@ document.getElementById("total_price").innerText =
     "Total: $" + total.toFixed(2);
 
 
-// Remove ONE item
+// Remove a single item
 function removeOne(id, size){
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Find SAME item + SAME size
+    // Finds same items and size
     let index = cart.findIndex(function(item){
 
         return Number(item.id) === Number(id)
@@ -126,17 +128,17 @@ function removeOne(id, size){
 
     });
 
-    // Remove ONE item
+    // Remove one item
     if(index > -1){
 
         cart.splice(index, 1);
 
     }
 
-    // Save updated cart
+    // Saves to the updated cart
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    // Reload page
+    // Reloads page
     location.reload();
 }
 

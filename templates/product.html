@@ -93,26 +93,26 @@
 <!--javascript! -->       
 <script>
 
-//  Creates a variable that holds the users information from the server
+// Creates a variable that holds the users info
 let currentItem = null;
 
-//  Gets the id from the URL
+// Collects ID
 const id = window.location.pathname.split("/").pop();
 
-//  It gets the product ID and details from server
+// Gets information from the database
 fetch(`/item/${id}`)
-.then(res => res.json())
+.then(res => res.json()) //Converts into a object
 .then(item => { 
 
-    //  If item not found it displays product not found
-    if(item.error){
+    
+    if(item.error){ // If item not found it displays product not found
         alert("Product not found");
         return;
     }
-    //  Saves the item to the variable
-    currentItem = item;
 
-    //  Gets data from database and puts it into the html tags
+    currentItem = item; // Saves the data into an itme
+
+    // Links back to HTML page with details
     document.getElementById("img").src = item.image;
     document.getElementById("name").textContent = item.name.replaceAll("_"," ");
     document.getElementById("price").textContent = "$" + item.price;
@@ -121,7 +121,7 @@ fetch(`/item/${id}`)
 .catch(err => console.log("ERROR:", err));
 
 
-// Add to cart functions
+// Add to cart function
 function addToCart(){
 
     if(!currentItem){
@@ -129,24 +129,22 @@ function addToCart(){
         return;
     }
 
-    // Gets selected size
-    const size = document.getElementById("sizeSelect").value;
+    
+    const size = document.getElementById("sizeSelect").value; // Gets size from user
 
-    // Prevents empty size
     if(!size){
-        alert("Please select a size");
+        alert("Please select a size"); // Makes user select a size
         return;
     }
 
-    // Gets quantity value
-    const quantity = Number(document.getElementById("quantityInput").value);
+    const quantity = Number(document.getElementById("quantityInput").value); // Gets quantity amount user wants
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieves cart or start with an empty cart
 
-    // Adds item MULTIPLE TIMES
-    for(let i = 0; i < quantity; i++){
+ 
+    for(let i = 0; i < quantity; i++){ // Loop for quantity
 
-        cart.push({
+        cart.push({ 
             id: currentItem.id,
             name: currentItem.name,
             price: Number(currentItem.price),
@@ -156,7 +154,7 @@ function addToCart(){
 
     }
 
-    // Save cart
+    // Save to the cart
     localStorage.setItem("cart", JSON.stringify(cart));
 
     alert("Added to cart!");
