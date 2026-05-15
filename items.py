@@ -35,9 +35,6 @@ def checkout():
 
 
 
-
-
-
 # Database Connection
 
 def get_db_connection():
@@ -50,7 +47,7 @@ def get_db_connection():
 def items():
     conn = get_db_connection()
 
-# Gets ID's from database
+# Gets ID from database
     items = conn.execute("""
         SELECT Product_ID, Product_Name, Image, Product_Price, Product_Type
         FROM Product
