@@ -125,7 +125,8 @@ def single_item(id):
 if __name__ == "__main__":
     app.run(debug=True)
 
-#For running error Page
+#For running error Page if user encoutners error
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("404.html"), 404    
+    # This catches global "Route Not Found" errors
+    return render_template("404.html"), 404

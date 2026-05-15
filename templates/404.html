@@ -1,1 +1,65 @@
-<h1>ERRORRRR NOT AVALIBLE PLEASE GO BACK</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <title>Erorr 404</title>
+</head>
+<body>
+<nav class="navbar">  
+    <div class="logo">Walk By Faith</div>
+    
+    <ul class="navbar_links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/collection">Shop Collection</a></li>
+    </ul>
+
+    <div class="navbar_icon"> 
+        <img src="{{ url_for('static', filename='images/Navbar/cart.png') }}">
+    </div>
+</nav>
+
+<div class="error-container" style="text-align: center; padding: 100px 20px;">
+    <h1>404</h1>
+    <h2>It looks like you have taking the wrong path!</h2>
+    <p>The page you are looking for doesn't exist or has been moved.</p>
+    
+    <div class="error-actions">
+        <a href="{{ url_for('home') }}" class="btn-primary">Back to Home</a>
+        <a href="{{ url_for('collection') }}" class="btn-secondary">View Collection</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer_container">
+        
+        <!-- Column 1 -->
+<div class="footer_columns">
+        <h2>Walk By Faith</h2>
+        <p>"For we walk by faith, not by sight."<br>(2 Corinthians 5:7)</p>
+        <p>Tena Koe</p>
+    </div>
+
+        <!-- Columnn 2 -->
+    <div class="footer_columns">
+        <h3>Pages</h3>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/collection">Shop Collection</a></li>
+        </ul>
+    </div>
+
+        <!-- Column 3 -->
+    <div class="footer_columns">
+        <h3>Contact</h3>
+        <p>Email: 21110@rosmini.school.nz</p>
+        <p>Phone: +64 6 6767 6767</p>
+        <p>Auckland, New Zealand</p>
+    </div>
+
+    </div>
+</footer>
+</body>
+</html>
