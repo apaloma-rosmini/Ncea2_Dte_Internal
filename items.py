@@ -19,6 +19,20 @@ def collection():
 # Product.HTML
 @app.route("/product/<int:id>")
 def product_page(id):
+
+    conn = get_db_connection()
+
+    product = conn.execute("""
+        SELECT * FROM Product
+        WHERE Product_ID = ?
+    """, (id,)).fetchone()
+
+    conn.close()
+
+    # If product does not exist
+    if product is None:
+        return render_template("404.html"), 404
+
     return render_template("product.html", product_id=id)
 
 
@@ -110,3 +124,8 @@ def single_item(id):
 #Running for debug
 if __name__ == "__main__":
     app.run(debug=True)
+
+#For running error Page
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404    
