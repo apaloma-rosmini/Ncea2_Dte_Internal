@@ -92,3 +92,17 @@ body {
   display: inline-block;
   text-decoration: none;
 }
+
+.remove_all_btn{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.remove_all_btn:hover{
+    opacity: 0.8;
+}

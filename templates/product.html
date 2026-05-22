@@ -139,6 +139,12 @@ function addToCart(){
 
     const quantity = Number(document.getElementById("quantityInput").value); // Gets quantity amount user wants
 
+    // Prevents 0, negative numbers, or empty values
+    if(quantity <= 0 || isNaN(quantity)){
+    alert("Please enter a quantity greater than 0");
+    return;
+}
+
     let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieves cart or start with an empty cart
 
  

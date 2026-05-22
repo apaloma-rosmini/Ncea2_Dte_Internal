@@ -130,3 +130,16 @@ if __name__ == "__main__":
 def page_not_found(e):
     # This catches global "Route Not Found" errors
     return render_template("404.html"), 404
+
+def query_db(query, args=(), one=False):
+    conn = get_db_connection()
+
+    result = conn.execute(query, args).fetchall()
+
+    conn.close()
+
+    return (result[0] if result else None) if one else result
+
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template("500.html"), 500

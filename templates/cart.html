@@ -28,6 +28,10 @@
     <h1>Your Cart</h1>
 
     <div id="cart-items"></div>
+    
+<button onclick="clearCart()" class="remove_all_btn">
+    Remove All
+</button>
 
     <!-- Display Total Section -->
     <div class="total_section">
@@ -142,6 +146,15 @@ function removeOne(id, size){
     location.reload();
 }
 
+function clearCart(){
+
+    // Removes all cart data
+    localStorage.removeItem("cart");
+
+    // Reloads the page
+    location.reload();
+
+}
 </script>
 </body>
 </html>
